@@ -6,15 +6,12 @@ export const ToDoForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const [todo, setToDo] = useState();
-
   const addToDo = obj => {
     const newToDo = {
       id: nanoid(),
       status: null,
       ...obj,
     };
-    setToDo(newToDo);
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -31,8 +28,6 @@ export const ToDoForm = () => {
         return;
     }
   };
-
-  console.log('addToDo', todo);
 
   const handleSubmit = evt => {
     evt.preventDefault();
