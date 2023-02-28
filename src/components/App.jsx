@@ -1,3 +1,14 @@
+import { ToDoForm } from './ToDoForm/ToDoForm';
+
 export const App = () => {
-  return <div></div>;
+  return (
+    <div
+      style={{
+        backgroundColor: 'antiquewhite',
+        color: '#010101',
+      }}
+    >
+      <ToDoForm />
+    </div>
+  );
 };

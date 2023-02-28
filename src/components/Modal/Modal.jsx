@@ -48,15 +48,15 @@ const ModalBackdrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1200;
+  z-index: 100;
 `;
 
 const ModalWindow = styled.div`
-  background-color: ${props => props.theme.colors.white};
+  background-color: white;
   margin: auto;
   padding: 20px;
   width: 60%;
-  border-radius: ${props => props.theme.spacing(3)};
+  border-radius: 4px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 150;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
