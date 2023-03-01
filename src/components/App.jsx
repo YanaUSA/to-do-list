@@ -1,4 +1,5 @@
 import { ToDoForm } from './ToDoForm/ToDoForm';
+import { ToDoList } from './ToDoList/ToDoList';
 
 export const App = () => {
   return (
@@ -9,6 +10,7 @@ export const App = () => {
       }}
     >
       <ToDoForm />
+      <ToDoList />
     </div>
   );
 };

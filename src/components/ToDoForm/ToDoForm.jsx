@@ -1,17 +1,22 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, FormLabel, FormInput, FormButton } from './ToDoForm.styled';
+import { addedToDo } from 'redux/to-do-slice';
 
 export const ToDoForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const addToDo = obj => {
     const newToDo = {
-      id: nanoid(),
-      status: null,
+      id: nanoid(5),
+      status: false,
       ...obj,
     };
+
+    dispatch(addedToDo(newToDo));
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -29,8 +34,12 @@ export const ToDoForm = () => {
     }
   };
 
+  console.log('title', title);
+
   const handleSubmit = evt => {
-    evt.preventDefault();
+    if (!title) {
+      return;
+    }
     addToDo({ title, description });
 
     resetForm();
@@ -52,7 +61,9 @@ export const ToDoForm = () => {
           onChange={handleChange}
           placeholder="Enter title"
         />
+        {/* <p style={{ color: 'red' }}>This field is empty</p> */}
       </FormLabel>
+
       <FormLabel>
         Description:
         <FormInput

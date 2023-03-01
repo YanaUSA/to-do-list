@@ -1,13 +1,33 @@
 import styled from 'styled-components';
 
-export const ToDoListUl = styled.ul`
-  margin: 0;
-  padding: 0 20px;
+export const ToDoLisTable = styled.table`
   width: 100%;
+  /* overflow: hidden; */
 `;
 
-export const ToDoListLi = styled.li`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-`;
+// export const ToDoListThed = styled.thed`
+//   border-collapse: collapse;
+//   height: 100%;
+//   width: 100%;
+//   background-color: gray;
+//   /* overflow-y: auto;
+//     overflow-x: hidden; */
+// `;
+
+// export const ToDoListThedRow = styled.th`
+//   border-collapse: collapse;
+//   height: 100%;
+//   width: 100%;
+//   /* overflow-y: auto;
+//     overflow-x: hidden; */
+// `;
+
+// export const TableBody = styled.tbody`
+//   display: block;
+//   height: 100%;
+//   overflow-y: auto;
+//   /* position: absolute; */
+//   padding-top: 10px;
+//   box-sizing: border-box;
+//   color: lightcyan;
+// `;
