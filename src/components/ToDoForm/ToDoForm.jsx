@@ -8,12 +8,13 @@ export const ToDoForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [isInputEmpty, setIsInputEmpty] = useState(false);
 
   const addToDo = obj => {
     const newToDo = {
       id: nanoid(5),
-      status: false,
       ...obj,
+      status: false,
     };
 
     dispatch(addedToDo(newToDo));
@@ -34,12 +35,14 @@ export const ToDoForm = () => {
     }
   };
 
-  console.log('title', title);
-
   const handleSubmit = evt => {
+    evt.preventDefault();
     if (!title) {
+      setIsInputEmpty(true);
       return;
     }
+    setIsInputEmpty(false);
+
     addToDo({ title, description });
 
     resetForm();
@@ -54,14 +57,25 @@ export const ToDoForm = () => {
     <Form onSubmit={handleSubmit} autoComplete="off">
       <FormLabel>
         Title:
-        <FormInput
-          type="text"
-          name="title"
-          value={title}
-          onChange={handleChange}
-          placeholder="Enter title"
-        />
-        {/* <p style={{ color: 'red' }}>This field is empty</p> */}
+        {isInputEmpty ? (
+          <FormInput
+            style={{ borderColor: 'red' }}
+            type="text"
+            name="title"
+            value={title}
+            onChange={handleChange}
+            placeholder="Enter title"
+          />
+        ) : (
+          <FormInput
+            type="text"
+            name="title"
+            value={title}
+            onChange={handleChange}
+            placeholder="Enter title"
+          />
+        )}
+        {isInputEmpty && <p style={{ color: 'red' }}>This field is empty</p>}
       </FormLabel>
 
       <FormLabel>

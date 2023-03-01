@@ -7,6 +7,7 @@ export const Form = styled.form`
   align-items: end;
   border: 1px solid grey;
   padding: 20px;
+  margin-bottom: 20px;
 `;
 
 export const FormLabel = styled.label`

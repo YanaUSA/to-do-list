@@ -1,31 +1,46 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Modal } from '../Modal/Modal';
+import { ToDo } from '../ToDo/ToDo';
 
-export const ToDosItem = ({
-  id,
-  title,
-  description,
-  status,
-  // onToggleStatus,
-}) => {
-  const [checked, setChecked] = useState(false);
-  // console.log('todos', todos);
+export const ToDosItem = ({ id, title, description, status }) => {
+  const [showModal, setShowModal] = useState(false);
 
-  const handleChange = () => {
-    setChecked(!checked);
+  const toggleModal = () => {
+    setShowModal(prevState => !prevState);
+    if (showModal) {
+      document.body.style.overflow = 'unset';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const handleChange = e => {
+    console.log(e.target.checked);
   };
 
   return (
     <>
-      {/* <tr key={id}> */}
-      <td key={id}>{id}</td>
-      <td>{title}</td>
-      <td>{description}</td>
-      <td>
-        {/* {status} */}
-        <input type="checkbox" checked={status} onChange={handleChange} />
-      </td>
-      {/* </tr> */}
+      <tr onClick={toggleModal}>
+        <td>{id}</td>
+        <td>{title}</td>
+        <td>{description}</td>
+        <td>
+          {status}
+          <input type="checkbox" checked={status} onChange={handleChange} />
+        </td>
+      </tr>
+      {showModal && (
+        <Modal onClick={toggleModal}>
+          <ToDo
+            id={id}
+            title={title}
+            description={description}
+            status={status}
+            onClick={toggleModal}
+          />
+        </Modal>
+      )}
     </>
   );
 };

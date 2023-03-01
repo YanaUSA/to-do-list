@@ -5,11 +5,11 @@ import { useEffect } from 'react';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ onClose, children }) => {
+export const Modal = ({ onClick, children }) => {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
-        onClose();
+        onClick();
       }
     };
     window.addEventListener('keydown', handleEscape);
@@ -17,11 +17,11 @@ export const Modal = ({ onClose, children }) => {
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [onClose]);
+  }, [onClick]);
 
   const handleBackdrop = e => {
     if (e.target === e.currentTarget) {
-      onClose();
+      onClick();
     }
   };
 
@@ -34,7 +34,7 @@ export const Modal = ({ onClose, children }) => {
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
 

@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const Span = styled.span`
+  margin: 0 20px;
+`;
+
+export const Li = styled.li`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+`;
+
 export const ToDoLisTable = styled.table`
   width: 100%;
   /* overflow: hidden; */

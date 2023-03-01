@@ -7,12 +7,14 @@ export const todosSlice = createSlice({
   },
   reducers: {
     addedToDo: (state, { payload }) => {
-      console.log('payload', payload);
       state.todos.push(payload);
+    },
+    updateStatus: (state, { payload }) => {
+      state.todos = payload;
     },
   },
 });
 
-export const { addedToDo } = todosSlice.actions;
+export const { addedToDo, updateStatus } = todosSlice.actions;
 
 export default todosSlice.reducer;
